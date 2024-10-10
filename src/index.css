@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        font-family: theme(fontFamily.openSans);
+        color: theme(colors.black.3);
+    }
+}
+
+@layer utilities {
+    @keyframes shrink {
+        from {
+            width: 100%;
+        }
+        to {
+            width: 0%;
+        }
+    }
+    @keyframes toast-enter {
+        from {
+            height: 0px;
+            opacity: 0;
+            transform: translate(0, 20px);
+        }
+        40% {
+            height: 92px;
+            opacity: 0;
+            transform: translate(0, 20px);
+        }
+        to {
+            height: 92px;
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+    }
+    @keyframes toast-leave {
+        from {
+            height: 92px;
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+        60% {
+            height: 92px;
+            opacity: 0;
+            transform: translate(0, 20px);
+        }
+        to {
+            height: 0px;
+            opacity: 0;
+            transform: translate(0, 20px);
+        }
+    }
+}

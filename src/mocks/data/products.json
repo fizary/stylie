@@ -1,0 +1,106 @@
+[
+    {
+        "id": 1,
+        "name": "Product 101703",
+        "slug": "product-101703",
+        "image_url": "/upload/products/1.webp",
+        "full_price": 84,
+        "price": 42
+    },
+    {
+        "id": 2,
+        "name": "Product 101704",
+        "slug": "product-101704",
+        "image_url": "/upload/products/2.webp",
+        "full_price": 64,
+        "price": 56
+    },
+    {
+        "id": 3,
+        "name": "Product 101705",
+        "slug": "product-101705",
+        "image_url": "/upload/products/3.webp",
+        "full_price": 41,
+        "price": 27
+    },
+    {
+        "id": 4,
+        "name": "Product 101706",
+        "slug": "product-101706",
+        "image_url": "/upload/products/4.webp",
+        "full_price": 84,
+        "price": 42
+    },
+    {
+        "id": 5,
+        "name": "Product 101707",
+        "slug": "product-101707",
+        "image_url": "/upload/products/5.webp",
+        "full_price": 84,
+        "price": 42
+    },
+    {
+        "id": 6,
+        "name": "Product 101708",
+        "slug": "product-101708",
+        "image_url": "/upload/products/6.webp",
+        "full_price": 84,
+        "price": 42
+    },
+    {
+        "id": 7,
+        "name": "Product 101709",
+        "slug": "product-101709",
+        "image_url": "/upload/products/7.webp",
+        "full_price": 84,
+        "price": 42
+    },
+    {
+        "id": 8,
+        "name": "Product 101710",
+        "slug": "product-101710",
+        "image_url": "/upload/products/8.webp",
+        "full_price": 84,
+        "price": 42
+    },
+    {
+        "id": 9,
+        "name": "Product 101711",
+        "slug": "product-101711",
+        "image_url": "/upload/products/9.webp",
+        "full_price": 84,
+        "price": 42
+    },
+    {
+        "id": 10,
+        "name": "Product 101712",
+        "slug": "product-101712",
+        "image_url": "/upload/products/10.webp",
+        "full_price": 84,
+        "price": 42
+    },
+    {
+        "id": 11,
+        "name": "Product 101713",
+        "slug": "product-101713",
+        "image_url": "/upload/products/11.webp",
+        "full_price": 84,
+        "price": 42
+    },
+    {
+        "id": 12,
+        "name": "Product 101714",
+        "slug": "product-101714",
+        "image_url": "/upload/products/12.webp",
+        "full_price": 84,
+        "price": 42
+    },
+    {
+        "id": 13,
+        "name": "Product 101715",
+        "slug": "product-101715",
+        "image_url": "/upload/products/13.webp",
+        "full_price": 84,
+        "price": 42
+    }
+]

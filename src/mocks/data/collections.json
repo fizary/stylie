@@ -1,0 +1,31 @@
+[
+    {
+        "id": 1,
+        "image_url": "/upload/collections/winter.webp",
+        "tag": "BEST SELLER",
+        "text": "Winter Collection",
+        "link_url": "#"
+    },
+    {
+        "id": 2,
+        "image_url": "/upload/collections/summer.webp",
+        "tag": "NEW",
+        "text": "Summer Collection",
+        "link_url": "#"
+    },
+    {
+        "id": 3,
+        "image_url": "/upload/collections/spring.webp",
+        "tag": "NEW",
+        "text": "Spring Collection",
+        "link_url": "#"
+    },
+    {
+        "id": 4,
+        "image_url": "/upload/collections/autumn.webp",
+        "tag": "COMING SOON",
+        "text": "Autumn Collection",
+        "link_url": "#",
+        "link_text": "Preorder"
+    }
+]

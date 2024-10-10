@@ -1,0 +1,17 @@
+{
+    "id": "/",
+    "scope": "/",
+    "start_url": "/",
+    "name": "Stylie",
+    "short_name": "Stylie",
+    "icons": [
+        {
+            "src": "/favicon.svg",
+            "type": "image/svg+xml",
+            "sizes": "any"
+        }
+    ],
+    "theme_color": "#e06952",
+    "background_color": "#ffffff",
+    "display": "standalone"
+}

@@ -1,0 +1,33 @@
+[
+    {
+        "id": 1,
+        "name": "Jackets",
+        "slug": "jackets"
+    },
+
+    {
+        "id": 2,
+        "name": "Jeans",
+        "slug": "jeans"
+    },
+    {
+        "id": 3,
+        "name": "Shorts",
+        "slug": "shorts"
+    },
+    {
+        "id": 4,
+        "name": "T-Shirts",
+        "slug": "t-shirts"
+    },
+    {
+        "id": 5,
+        "name": "Sweaters",
+        "slug": "sweaters"
+    },
+    {
+        "id": 6,
+        "name": "Hoodies",
+        "slug": "hoodies"
+    }
+]
