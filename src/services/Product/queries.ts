@@ -1,6 +1,6 @@
 import { queryOptions, useQuery } from "@tanstack/react-query";
 import { queryClient } from "@/services";
-import { fetchProductBySlug, fetchProducts } from "./service";
+import { fetchProductBySlug, fetchProducts } from "./services";
 import type { FetchProductsFilters } from "./types";
 
 const productsQuery = (filters?: FetchProductsFilters) =>

@@ -1,6 +1,6 @@
 import { queryOptions, useQuery } from "@tanstack/react-query";
 import { queryClient } from "@/services";
-import { fetchCollections } from "./service";
+import { fetchCollections } from "./services";
 import type { FetchCollectionsFilters } from "./types";
 
 const collectionsQuery = (filters?: FetchCollectionsFilters) =>

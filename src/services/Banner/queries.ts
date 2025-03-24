@@ -1,6 +1,6 @@
 import { queryOptions, useQuery } from "@tanstack/react-query";
 import { queryClient } from "@/services";
-import { fetchBannerById } from "./service";
+import { fetchBannerById } from "./services";
 
 const bannerByIdQuery = (id: number) =>
     queryOptions({

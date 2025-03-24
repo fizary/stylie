@@ -1,2 +1,2 @@
-export { login, register } from "./service";
+export { login, register } from "./services";
 export type { LoginFormInputsType, RegisterFormInputsType } from "./types";

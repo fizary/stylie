@@ -1,6 +1,6 @@
 import { queryOptions, useQuery } from "@tanstack/react-query";
 import { queryClient } from "@/services";
-import { fetchOrderFees } from "./service";
+import { fetchOrderFees } from "./services";
 
 const orderFeesQuery = queryOptions({
     queryKey: ["order-fees"],

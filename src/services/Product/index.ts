@@ -1,4 +1,4 @@
-export { fetchProducts } from "./service";
+export { fetchProducts } from "./services";
 export {
     prefetchProductBySlug,
     prefetchProducts,

@@ -1,6 +1,6 @@
 import { queryOptions, useQuery } from "@tanstack/react-query";
 import { queryClient } from "@/services";
-import { fetchListBySlug } from "./service";
+import { fetchListBySlug } from "./services";
 
 const listBySlugQuery = (slug: string) =>
     queryOptions({
