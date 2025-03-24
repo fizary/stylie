@@ -39,15 +39,15 @@ export const HomePage = () => {
                 </Defer>
             </main>
             <div className="w-full bg-gray-4">
-                <div className="container grid gap-y-8 py-10 md:grid-cols-3 md:gap-x-5 lg:gap-x-10 xl:gap-x-16">
+                <div className="container grid gap-y-8 px-10 py-5 md:grid-cols-3 md:gap-x-5 lg:gap-x-10 xl:gap-x-16">
                     <div>
                         <Icon icon="airplane" className="mx-auto h-12" />
                         <div className="mt-3 text-center text-lg font-bold">
                             Worldwide Shipping
                         </div>
                         <div className="text-center text-sm font-semibold">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod.
+                            We deliver to customers worldwide, no matter where
+                            you are!
                         </div>
                     </div>
                     <div>
@@ -56,8 +56,8 @@ export const HomePage = () => {
                             Fast Delivery
                         </div>
                         <div className="text-center text-sm font-semibold">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod.
+                            Get your order quickly with our speedy shipping
+                            options.
                         </div>
                     </div>
                     <div>
@@ -66,8 +66,8 @@ export const HomePage = () => {
                             Free Refunds
                         </div>
                         <div className="text-center text-sm font-semibold">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod.
+                            Shop risk-free with our hassle-free, no-cost refund
+                            policy.
                         </div>
                     </div>
                 </div>

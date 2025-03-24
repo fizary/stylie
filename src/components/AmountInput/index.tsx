@@ -42,7 +42,7 @@ export const AmountInput = ({
             <input
                 type="text"
                 inputMode="numeric"
-                className="mx-[-1px] w-20 border border-black-3 px-6 py-1 text-center text-sm font-semibold outline-none focus-visible:z-10 focus-visible:border-primary-3 focus-visible:text-primary-3"
+                className="-mx-px w-20 border border-black-3 px-6 py-1 text-center text-sm font-semibold outline-none focus-visible:z-10 focus-visible:border-primary-3 focus-visible:text-primary-3"
                 value={isEmpty ? "" : value}
                 onChange={({ target }) => {
                     const sanitizePattern = /[^0-9]/g;
