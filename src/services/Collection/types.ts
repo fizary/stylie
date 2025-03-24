@@ -6,3 +6,7 @@ export type CollectionType = {
     link_url: string;
     link_text?: string;
 };
+
+export type FetchCollectionsFilters = {
+    ids?: number[];
+};

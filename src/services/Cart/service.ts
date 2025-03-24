@@ -1,4 +1,4 @@
-import { getProducts, type ProductType } from "@/services/Product";
+import { fetchProducts, type ProductType } from "@/services/Product";
 import { LocalStorage } from "@/utils/localStorage";
 import type { CartStorageType, CartItemType } from "./types";
 
@@ -24,7 +24,7 @@ export async function revalidateCart(cartItems: CartItemType[]) {
         return acc;
     }, [] as number[]);
 
-    const products = (await getProducts({ ids: productIds })).reduce(
+    const products = (await fetchProducts({ ids: productIds })).reduce(
         (acc, product) => {
             acc[product.id] = product;
             return acc;

@@ -1,4 +1,3 @@
-import { useLoaderData } from "react-router-dom";
 import { Defer } from "@/components/Defer";
 import { Icon } from "@/components/Icon";
 import {
@@ -7,32 +6,36 @@ import {
 } from "@/components/ProductList";
 import { Banner, BannerSkeleton } from "./components/Banner";
 import { Collections, CollectionsSkeleton } from "./components/Collections";
-import { type HomePageLoaderData } from "./loaders";
+import { useBannerById } from "@/services/Banner";
+import { useCollections } from "@/services/Collection";
+import { useListBySlug } from "@/services/List";
 
 export const HomePage = () => {
-    const { banner, collections, saleList, trendingList } =
-        useLoaderData() as HomePageLoaderData;
+    const bannerQuery = useBannerById(1);
+    const collectionsQuery = useCollections();
+    const saleListQuery = useListBySlug("sale");
+    const trendingListQuery = useListBySlug("trending");
 
     return (
         <>
-            <Defer data={banner} fallback={<BannerSkeleton />}>
-                {(resolvedBanner) => <Banner banner={resolvedBanner} />}
+            <Defer query={bannerQuery} fallback={<BannerSkeleton />}>
+                {(banner) => <Banner banner={banner} />}
             </Defer>
             <main className="flex grow flex-col gap-y-10 py-10">
-                <Defer data={saleList} fallback={<ProductListSkeleton />}>
-                    {(resolvedList) => (
-                        <LinkedProductList list={resolvedList} />
-                    )}
+                <Defer query={saleListQuery} fallback={<ProductListSkeleton />}>
+                    {(list) => <LinkedProductList list={list} />}
                 </Defer>
-                <Defer data={collections} fallback={<CollectionsSkeleton />}>
-                    {(resolvedCollections) => (
-                        <Collections collections={resolvedCollections} />
-                    )}
+                <Defer
+                    query={collectionsQuery}
+                    fallback={<CollectionsSkeleton />}
+                >
+                    {(collections) => <Collections collections={collections} />}
                 </Defer>
-                <Defer data={trendingList} fallback={<ProductListSkeleton />}>
-                    {(resolvedList) => (
-                        <LinkedProductList list={resolvedList} />
-                    )}
+                <Defer
+                    query={trendingListQuery}
+                    fallback={<ProductListSkeleton />}
+                >
+                    {(list) => <LinkedProductList list={list} />}
                 </Defer>
             </main>
             <div className="w-full bg-gray-4">

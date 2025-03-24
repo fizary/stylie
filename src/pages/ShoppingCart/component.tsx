@@ -1,14 +1,13 @@
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
 import { Defer } from "@/components/Defer";
 import { Heading } from "@/components/Heading";
 import { CartItemList, CartItemListSkeleton } from "./components/CartItemList";
 import { CartSummary, CartSummarySkeleton } from "./components/CartSummary";
 import { CartContext } from "@/contexts/cart";
-import { type ShoppingCartPageLoaderData } from "./loaders";
+import { useOrderFees } from "@/services/Order";
 
 export const ShoppingCartPage = () => {
-    const { fees } = useLoaderData() as ShoppingCartPageLoaderData;
+    const orderFeesQuery = useOrderFees();
     const { isLoading, cart, updateCartItem, removeFromCart } =
         useContext(CartContext);
 
@@ -28,10 +27,11 @@ export const ShoppingCartPage = () => {
                             updateCartItem={updateCartItem}
                             removeFromCart={removeFromCart}
                         />
-                        <Defer data={fees} fallback={<CartSummarySkeleton />}>
-                            {(resolvedFees) => (
-                                <CartSummary cart={cart} fees={resolvedFees} />
-                            )}
+                        <Defer
+                            query={orderFeesQuery}
+                            fallback={<CartSummarySkeleton />}
+                        >
+                            {(fees) => <CartSummary cart={cart} fees={fees} />}
                         </Defer>
                     </>
                 ) : (

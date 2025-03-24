@@ -1,4 +1,4 @@
-export { getList } from "./service";
+export { prefetchListBySlug, useListBySlug } from "./queries";
 export type {
     LinkedProductListType,
     PaginatedProductListType,

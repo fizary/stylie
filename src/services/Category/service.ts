@@ -1,30 +1,29 @@
 import { type PaginatedProductListType } from "@/services/List";
 import { getApiUrl } from "@/utils/api";
-import type { CategoryType } from "./types";
+import type { CategoryType, FetchCategoriesFilters } from "./types";
 
-type CategoriesSearchParams = {
-    ids?: number[];
-};
-
-export async function getCategories(
-    searchParams?: CategoriesSearchParams,
+export async function fetchCategories(
+    filters?: FetchCategoriesFilters,
 ): Promise<CategoryType[]> {
     const response = await fetch(
-        getApiUrl("/api/categories", undefined, searchParams),
+        getApiUrl("/api/categories", undefined, filters),
     );
+
+    if (!response.ok) throw new Error("Categories could not be fetched");
+
     return response.json();
 }
 
-type CategoryProductListSearchParams = {
-    page?: number;
-};
-
-export async function getCategoryProductList(
+export async function fetchCategoryProductsBySlug(
     slug: string,
-    { page = 1 }: CategoryProductListSearchParams,
+    page = 1,
 ): Promise<PaginatedProductListType> {
     const response = await fetch(
         getApiUrl("/api/categories/:slug/product-list", { slug }, { page }),
     );
+
+    if (!response.ok)
+        throw new Error("Products for category could not be fetched");
+
     return response.json();
 }

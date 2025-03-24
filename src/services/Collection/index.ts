@@ -1,2 +1,2 @@
-export { getCollections } from "./service";
+export { prefetchCollections, useCollections } from "./queries";
 export type { CollectionType } from "./types";

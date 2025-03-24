@@ -1,15 +1,12 @@
-import { getBanner } from "@/services/Banner";
-import { getCollections } from "@/services/Collection";
-import { getList } from "@/services/List";
-import type { LoaderData } from "@/types/router";
+import { prefetchBannerById } from "@/services/Banner";
+import { prefetchCollections } from "@/services/Collection";
+import { prefetchListBySlug } from "@/services/List";
 
-export type HomePageLoaderData = LoaderData<typeof homePageLoader>;
+export function homePageLoader() {
+    prefetchBannerById(1);
+    prefetchCollections();
+    prefetchListBySlug("sale");
+    prefetchListBySlug("trending");
 
-export const homePageLoader = async () => {
-    return {
-        banner: getBanner(1),
-        collections: getCollections(),
-        saleList: getList("sale"),
-        trendingList: getList("trending"),
-    };
-};
+    return null;
+}

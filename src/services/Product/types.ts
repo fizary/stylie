@@ -18,3 +18,7 @@ export type ProductDetailsType = BaseProductType & {
     slug: string;
     related: ProductType[];
 };
+
+export type FetchProductsFilters = {
+    ids?: number[];
+};

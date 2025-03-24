@@ -5,21 +5,17 @@ import { Defer } from "@/components/Defer";
 import { Icon } from "@/components/Icon";
 import { NavButton } from "@/components/NavButton";
 import { SidebarSkeleton } from "./skeleton";
+import { useCategories } from "@/services/Category";
 import { CartContext } from "@/contexts/cart";
-import { type CategoryType } from "@/services/Category";
 import { formatPrice } from "@/utils/formatters";
 
 type SidebarProps = {
-    categories: Promise<CategoryType[]>;
     isActive: boolean;
     hideSidebar: () => void;
 };
 
-export const Sidebar = ({
-    categories,
-    isActive,
-    hideSidebar,
-}: SidebarProps) => {
+export const Sidebar = ({ isActive, hideSidebar }: SidebarProps) => {
+    const categoriesQuery = useCategories();
     const { cart } = useContext(CartContext);
     const ref = useRef<HTMLDivElement>(null);
 
@@ -60,8 +56,11 @@ export const Sidebar = ({
                         <Icon icon="close" className="h-9" />
                     </button>
                     <div className="flex flex-col gap-7 py-10">
-                        <Defer data={categories} fallback={<SidebarSkeleton />}>
-                            {(resolvedCategories) => (
+                        <Defer
+                            query={categoriesQuery}
+                            fallback={<SidebarSkeleton />}
+                        >
+                            {(categories) => (
                                 <>
                                     <div className="flex gap-2">
                                         <NavButton
@@ -92,7 +91,7 @@ export const Sidebar = ({
                                         </NavButton>
                                     </div>
                                     <nav className="flex flex-col items-center gap-4">
-                                        {resolvedCategories.map((category) => (
+                                        {categories.map((category) => (
                                             <NavLink
                                                 key={category.id}
                                                 to={`/products/${category.slug}`}

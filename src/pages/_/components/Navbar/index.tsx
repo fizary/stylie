@@ -6,16 +6,16 @@ import { Icon } from "@/components/Icon";
 import { NavButton } from "@/components/NavButton";
 import { NavbarSkeleton } from "./skeleton";
 import { CartContext } from "@/contexts/cart";
-import { type CategoryType } from "@/services/Category";
+import { useCategories } from "@/services/Category";
 import { formatPrice } from "@/utils/formatters";
 
 type NavbarProps = {
-    categories: Promise<CategoryType[]>;
     isSticky: boolean;
     showSidebar: () => void;
 };
 
-export const Navbar = ({ categories, isSticky, showSidebar }: NavbarProps) => {
+export const Navbar = ({ isSticky, showSidebar }: NavbarProps) => {
+    const categoriesQuery = useCategories();
     const { cart } = useContext(CartContext);
     const cartValue = cart.reduce(
         (acc, item) => acc + item.amount * item.price,
@@ -36,11 +36,11 @@ export const Navbar = ({ categories, isSticky, showSidebar }: NavbarProps) => {
                 <button onClick={showSidebar} className="lg:hidden">
                     <Icon icon="reorder-three" className="h-11" />
                 </button>
-                <Defer data={categories} fallback={<NavbarSkeleton />}>
-                    {(resolvedCategories) => (
+                <Defer query={categoriesQuery} fallback={<NavbarSkeleton />}>
+                    {(categories) => (
                         <>
                             <nav className="hidden gap-5 lg:flex xl:gap-8">
-                                {resolvedCategories.map((category) => (
+                                {categories.map((category) => (
                                     <NavLink
                                         key={category.id}
                                         to={`/products/${category.slug}`}

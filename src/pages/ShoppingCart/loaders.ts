@@ -1,12 +1,7 @@
-import { getOrderFees } from "@/services/Order";
-import type { LoaderData } from "@/types/router";
+import { prefetchOrderFees } from "@/services/Order";
 
-export type ShoppingCartPageLoaderData = LoaderData<
-    typeof shoppingCartPageLoader
->;
+export function shoppingCartPageLoader() {
+    prefetchOrderFees();
 
-export const shoppingCartPageLoader = async () => {
-    return {
-        fees: getOrderFees(),
-    };
-};
+    return null;
+}

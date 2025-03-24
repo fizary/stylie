@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Defer } from "@/components/Defer";
 import {
     SimpleProductList,
@@ -8,16 +8,16 @@ import {
     ProductDetailsPane,
     ProductDetailsPaneSkeleton,
 } from "./components/ProductDetailsPane";
-import { type ProductPageLoaderData } from "./loaders";
+import { useProductBySlug } from "@/services/Product";
 
 export const ProductPage = () => {
     const params = useParams();
-    const { product } = useLoaderData() as ProductPageLoaderData;
+    const productQuery = useProductBySlug(params["slug"]!);
 
     return (
         <main className="flex grow flex-col gap-y-10 py-10">
             <Defer
-                data={product}
+                query={productQuery}
                 fallback={
                     <>
                         <ProductDetailsPaneSkeleton />
@@ -25,16 +25,16 @@ export const ProductPage = () => {
                     </>
                 }
             >
-                {(resolvedProduct) => (
+                {(product) => (
                     <>
                         <ProductDetailsPane
                             key={params["slug"]}
-                            product={resolvedProduct}
+                            product={product}
                         />
                         <SimpleProductList
                             list={{
                                 title: "Related products",
-                                products: resolvedProduct.related,
+                                products: product.related,
                             }}
                         />
                     </>

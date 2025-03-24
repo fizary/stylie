@@ -1,28 +1,26 @@
-import { Suspense, type ReactNode } from "react";
-import { Await } from "react-router-dom";
+import { type ReactNode } from "react";
+import { type UseQueryResult } from "@tanstack/react-query";
 
 type DeferProps<T> = {
-    data: T;
+    query: UseQueryResult<T>;
     fallback?: ReactNode;
     errorElement?: ReactNode;
-    children?: ReactNode | ((resolvedData: Awaited<T>) => ReactNode);
+    children?: ReactNode | ((data: T) => ReactNode);
 };
 
 export const Defer = <T,>({
-    data,
+    query,
     fallback,
     errorElement,
     children,
 }: DeferProps<T>) => {
-    return (
-        <Suspense fallback={fallback}>
-            <Await resolve={data} errorElement={errorElement}>
-                {(resolvedData: Awaited<T>) =>
-                    typeof children === "function"
-                        ? children(resolvedData)
-                        : children
-                }
-            </Await>
-        </Suspense>
-    );
+    const { data, isPending, isError } = query;
+
+    return isPending
+        ? fallback
+        : isError
+          ? errorElement
+          : typeof children === "function"
+            ? children(data)
+            : children;
 };

@@ -12,7 +12,7 @@ import { type LayoutLoaderData } from "./loaders";
 export const Layout = () => {
     const [isSidebarActive, setSidebarActive] = useState(false);
     const isScrollAtTop = useScrollAtTop();
-    const { cart, categories } = useLoaderData() as LayoutLoaderData;
+    const { cart } = useLoaderData() as LayoutLoaderData;
 
     const showSidebar = useCallback(() => {
         setSidebarActive(true);
@@ -27,16 +27,8 @@ export const Layout = () => {
     return (
         <CartProvider cart={cart}>
             <ScrollRestoration />
-            <Navbar
-                categories={categories}
-                isSticky={!isScrollAtTop}
-                showSidebar={showSidebar}
-            />
-            <Sidebar
-                categories={categories}
-                isActive={isSidebarActive}
-                hideSidebar={hideSidebar}
-            />
+            <Navbar isSticky={!isScrollAtTop} showSidebar={showSidebar} />
+            <Sidebar isActive={isSidebarActive} hideSidebar={hideSidebar} />
             <Outlet />
             <Footer />
             <ToastContainer />

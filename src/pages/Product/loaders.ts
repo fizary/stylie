@@ -1,10 +1,8 @@
-import { getProduct } from "@/services/Product";
-import type { LoaderData, LoaderFunctionArgs } from "@/types/router";
+import { prefetchProductBySlug } from "@/services/Product";
+import type { LoaderFunctionArgs } from "@/types/router";
 
-export type ProductPageLoaderData = LoaderData<typeof productPageLoader>;
+export function productPageLoader({ params }: LoaderFunctionArgs<"slug">) {
+    prefetchProductBySlug(params.slug!);
 
-export const productPageLoader = async ({
-    params,
-}: LoaderFunctionArgs<"slug">) => {
-    return { product: getProduct(params.slug!) };
-};
+    return null;
+}
