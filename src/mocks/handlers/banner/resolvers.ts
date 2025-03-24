@@ -1,5 +1,5 @@
 import { HttpResponse, type HttpResponseResolver, type PathParams } from "msw";
-import { type BannerType } from "@/services/Banner";
+import { type BannerType } from "@/services/banner";
 import banners from "@/mocks/data/banners.json";
 
 export const bannerResolver: HttpResponseResolver<

@@ -1,5 +1,5 @@
 import { HttpResponse, type HttpResponseResolver, type PathParams } from "msw";
-import { type LinkedProductListType } from "@/services/List";
+import { type LinkedProductListType } from "@/services/list";
 import lists from "@/mocks/data/lists.json";
 import products from "@/mocks/data/products.json";
 

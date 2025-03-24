@@ -1,12 +1,12 @@
 import { useState, useCallback } from "react";
 import { ScrollRestoration, Outlet, useLoaderData } from "react-router-dom";
-import { ToastContainer } from "@/components/Toast";
-import { Footer } from "./components/Footer";
-import { Navbar } from "./components/Navbar";
-import { Sidebar } from "./components/Sidebar";
+import { ToastContainer } from "@/components/toast";
+import { Footer } from "./components/footer";
+import { Navbar } from "./components/navbar";
+import { Sidebar } from "./components/sidebar";
 import { CartProvider } from "@/contexts/cart";
-import { useScrollAtTop } from "./hooks/useScrollAtTop";
-import { lockScroll, unlockScroll } from "@/utils/scrollLock";
+import { useScrollAtTop } from "./hooks/use-scroll-at-top";
+import { lockScroll, unlockScroll } from "@/utils/scroll-lock";
 import { type LayoutLoaderData } from "./loaders";
 
 export const Layout = () => {

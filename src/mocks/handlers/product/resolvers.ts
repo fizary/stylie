@@ -1,5 +1,5 @@
 import { HttpResponse, type HttpResponseResolver, type PathParams } from "msw";
-import { type ProductType, type ProductDetailsType } from "@/services/Product";
+import { type ProductType, type ProductDetailsType } from "@/services/product";
 import products from "@/mocks/data/products.json";
 
 export const productsResolver: HttpResponseResolver<

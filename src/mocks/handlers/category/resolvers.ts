@@ -1,6 +1,6 @@
 import { HttpResponse, type HttpResponseResolver, type PathParams } from "msw";
-import { type CategoryType } from "@/services/Category";
-import { type PaginatedProductListType } from "@/services/List";
+import { type CategoryType } from "@/services/category";
+import { type PaginatedProductListType } from "@/services/list";
 import categories from "@/mocks/data/categories.json";
 import products from "@/mocks/data/products.json";
 

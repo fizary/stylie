@@ -1,5 +1,5 @@
 import { HttpResponse, type HttpResponseResolver } from "msw";
-import { type CollectionType } from "@/services/Collection";
+import { type CollectionType } from "@/services/collection";
 import collections from "@/mocks/data/collections.json";
 
 export const collectionsResolver: HttpResponseResolver<

@@ -6,7 +6,7 @@ import {
     createContext,
     type PropsWithChildren,
 } from "react";
-import { setCart, type CartItemType } from "@/services/Cart";
+import { setCart, type CartItemType } from "@/services/cart";
 
 export type CartContextType = {
     cart: CartItemType[];

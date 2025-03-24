@@ -1,5 +1,5 @@
 import { HttpResponse, type HttpResponseResolver } from "msw";
-import { type OrderFees } from "@/services/Order";
+import { type OrderFees } from "@/services/order";
 
 export const orderFeesResolver: HttpResponseResolver<
     never,

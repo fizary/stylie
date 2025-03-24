@@ -1,5 +1,5 @@
-import { getCart, revalidateCart } from "@/services/Cart";
-import { prefetchCategories } from "@/services/Category";
+import { getCart, revalidateCart } from "@/services/cart";
+import { prefetchCategories } from "@/services/category";
 import type { LoaderData } from "@/types/router";
 
 export type LayoutLoaderData = LoaderData<typeof layoutLoader>;
