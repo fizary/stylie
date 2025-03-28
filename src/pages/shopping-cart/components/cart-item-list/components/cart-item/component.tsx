@@ -1,17 +1,16 @@
-import { type Dispatch, type SetStateAction } from "react";
 import { Link } from "react-router-dom";
 import { AmountInput } from "@/components/amount-input";
 import { Icon } from "@/components/icon";
-import { type CartItemType } from "@/services/cart";
+import { useCart, type CartItemType } from "@/features/cart";
 import { formatPrice } from "@/utils/formatters";
 
 type CartItemProps = {
     item: CartItemType;
-    setAmount: Dispatch<SetStateAction<number>>;
-    removeItem: () => void;
 };
 
-export const CartItem = ({ item, setAmount, removeItem }: CartItemProps) => {
+export const CartItem = ({ item }: CartItemProps) => {
+    const { updateCartItem, removeCartItem } = useCart();
+
     return (
         <div className="flex flex-col items-center gap-x-8 gap-y-3 py-2.5 sm:flex-row">
             <Link to={"/product/" + item.slug} className="shrink-0">
@@ -24,7 +23,9 @@ export const CartItem = ({ item, setAmount, removeItem }: CartItemProps) => {
                 <div className="flex justify-between gap-x-4">
                     <div className="text-lg">{item.name}</div>
                     <button
-                        onClick={removeItem}
+                        onClick={() =>
+                            removeCartItem({ id: item.id, size: item.size })
+                        }
                         className="text-gray-1 hover:text-primary-3"
                     >
                         <Icon icon="trash" className="h-[18px]" />
@@ -56,7 +57,19 @@ export const CartItem = ({ item, setAmount, removeItem }: CartItemProps) => {
                     </div>
                     <div className="space-y-1 sm:space-y-2.5">
                         <div className="text-xs">Amount</div>
-                        <AmountInput value={item.amount} setValue={setAmount} />
+                        <AmountInput
+                            value={item.amount}
+                            setValue={(value) =>
+                                updateCartItem({
+                                    id: item.id,
+                                    size: item.size,
+                                    amount:
+                                        typeof value === "function"
+                                            ? value(item.amount)
+                                            : value,
+                                })
+                            }
+                        />
                     </div>
                 </div>
             </div>

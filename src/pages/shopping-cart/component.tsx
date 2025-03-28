@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { Defer } from "@/components/defer";
 import { Heading } from "@/components/heading";
 import {
@@ -6,35 +5,30 @@ import {
     CartItemListSkeleton,
 } from "./components/cart-item-list";
 import { CartSummary, CartSummarySkeleton } from "./components/cart-summary";
-import { CartContext } from "@/contexts/cart";
+import { useCart } from "@/features/cart";
 import { useOrderFees } from "@/services/order";
 
 export const ShoppingCartPage = () => {
+    const { cart, isRevalidating } = useCart();
     const orderFeesQuery = useOrderFees();
-    const { isLoading, cart, updateCartItem, removeFromCart } =
-        useContext(CartContext);
 
     return (
         <main className="container grow py-10">
             <Heading>Shopping cart</Heading>
             <div className="mt-5 flex flex-col gap-8 lg:flex-row">
-                {isLoading ? (
+                {isRevalidating ? (
                     <>
                         <CartItemListSkeleton />
                         <CartSummarySkeleton />
                     </>
                 ) : cart.length > 0 ? (
                     <>
-                        <CartItemList
-                            cart={cart}
-                            updateCartItem={updateCartItem}
-                            removeFromCart={removeFromCart}
-                        />
+                        <CartItemList />
                         <Defer
                             query={orderFeesQuery}
                             fallback={<CartSummarySkeleton />}
                         >
-                            {(fees) => <CartSummary cart={cart} fees={fees} />}
+                            {(fees) => <CartSummary fees={fees} />}
                         </Defer>
                     </>
                 ) : (

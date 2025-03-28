@@ -1,11 +1,10 @@
-import { useContext } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { twJoin } from "tailwind-merge";
 import { Defer } from "@/components/defer";
 import { Icon } from "@/components/icon";
 import { NavButton } from "@/components/nav-button";
 import { NavbarSkeleton } from "./skeleton";
-import { CartContext } from "@/contexts/cart";
+import { useCartValue } from "@/features/cart";
 import { useCategories } from "@/services/category";
 import { formatPrice } from "@/utils/formatters";
 
@@ -16,11 +15,7 @@ type NavbarProps = {
 
 export const Navbar = ({ isSticky, showSidebar }: NavbarProps) => {
     const categoriesQuery = useCategories();
-    const { cart } = useContext(CartContext);
-    const cartValue = cart.reduce(
-        (acc, item) => acc + item.amount * item.price,
-        0,
-    );
+    const cartValue = useCartValue();
 
     return (
         <header

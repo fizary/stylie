@@ -1,12 +1,12 @@
-import { useContext, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 import { Defer } from "@/components/defer";
 import { Icon } from "@/components/icon";
 import { NavButton } from "@/components/nav-button";
 import { SidebarSkeleton } from "./skeleton";
+import { useCartValue } from "@/features/cart";
 import { useCategories } from "@/services/category";
-import { CartContext } from "@/contexts/cart";
 import { formatPrice } from "@/utils/formatters";
 
 type SidebarProps = {
@@ -16,13 +16,8 @@ type SidebarProps = {
 
 export const Sidebar = ({ isActive, hideSidebar }: SidebarProps) => {
     const categoriesQuery = useCategories();
-    const { cart } = useContext(CartContext);
+    const cartValue = useCartValue();
     const ref = useRef<HTMLDivElement>(null);
-
-    const cartValue = cart.reduce(
-        (acc, item) => acc + item.amount * item.price,
-        0,
-    );
 
     useEffect(() => {
         const handleResize = () => {

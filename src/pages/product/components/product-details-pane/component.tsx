@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { AmountInput } from "@/components/amount-input";
 import { Button } from "@/components/button";
@@ -7,7 +7,7 @@ import { SmallButton } from "@/components/small-button";
 import { addToast } from "@/components/toast/utils";
 import { AddToCartToast } from "./components/add-to-cart-toast";
 import { Gallery } from "./components/gallery";
-import { CartContext } from "@/contexts/cart";
+import { useCart } from "@/features/cart";
 import { type ProductDetailsType } from "@/services/product";
 import { formatPrice } from "@/utils/formatters";
 
@@ -16,7 +16,7 @@ type ProductDetailsPaneProps = {
 };
 
 export const ProductDetailsPane = ({ product }: ProductDetailsPaneProps) => {
-    const { addToCart } = useContext(CartContext);
+    const { addToCart } = useCart();
     const [searchParams, setSearchParams] = useSearchParams();
     const [selectedSize, setSelectedSize] = useState(
         searchParams.get("size") || product.sizes[0],

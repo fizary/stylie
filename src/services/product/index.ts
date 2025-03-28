@@ -1,4 +1,3 @@
-export { fetchProducts } from "./services";
 export {
     prefetchProductBySlug,
     prefetchProducts,

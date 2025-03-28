@@ -1,19 +1,15 @@
 import { Button } from "@/components/button";
 import { Heading } from "@/components/heading";
-import { formatPrice } from "@/utils/formatters";
-import { type CartItemType } from "@/services/cart";
+import { useCartValue } from "@/features/cart";
 import { type OrderFees } from "@/services/order";
+import { formatPrice } from "@/utils/formatters";
 
 type CartSummaryProps = {
-    cart: CartItemType[];
     fees: OrderFees;
 };
 
-export const CartSummary = ({ cart, fees }: CartSummaryProps) => {
-    const subtotalPrice = cart.reduce((acc, item) => {
-        acc += item.amount * item.price;
-        return acc;
-    }, 0);
+export const CartSummary = ({ fees }: CartSummaryProps) => {
+    const subtotalPrice = useCartValue();
     const totalPrice = subtotalPrice + fees.shipping + fees.tax;
 
     return (
