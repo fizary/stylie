@@ -34,7 +34,7 @@ export const ProductDetailsPane = ({ product }: ProductDetailsPaneProps) => {
                     <div className="text-sm">{product.short_description}</div>
                     <div className="flex items-baseline gap-x-2.5">
                         {product.full_price !== undefined && (
-                            <span className="text-sm font-bold text-gray-2 line-through">
+                            <span className="text-sm font-bold text-gray-1 line-through">
                                 {formatPrice(product.full_price)}
                             </span>
                         )}

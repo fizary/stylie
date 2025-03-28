@@ -41,7 +41,7 @@ export const CartItem = ({ item }: CartItemProps) => {
                             <div className="text-xs">Price</div>
                             <div className="flex items-baseline gap-x-1 text-lg">
                                 {item.full_price !== undefined && (
-                                    <div className="text-xs text-gray-2 line-through">
+                                    <div className="text-xs text-gray-1 line-through">
                                         {formatPrice(item.full_price)}
                                     </div>
                                 )}

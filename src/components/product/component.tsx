@@ -20,7 +20,7 @@ export const Product = ({ product }: ProductProps) => {
                 <div className="text-sm font-bold">{product.name}</div>
                 <div className="flex flex-wrap items-baseline gap-x-2.5">
                     {product.full_price !== undefined && (
-                        <span className="text-sm font-semibold text-gray-2 line-through">
+                        <span className="text-sm font-semibold text-gray-1 line-through">
                             {formatPrice(product.full_price)}
                         </span>
                     )}
