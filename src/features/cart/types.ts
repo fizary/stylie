@@ -12,7 +12,8 @@ export type CartContextType = {
     removeCartItem: (cartItem: BaseCartPayloadType) => void;
 };
 
-export type CartItemType = ProductType & {
+export type CartItemType = {
+    product: ProductType;
     size: string;
     amount: number;
 };

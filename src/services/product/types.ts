@@ -1,21 +1,17 @@
-type BaseProductType = {
+export type ProductType = {
     id: number;
     name: string;
+    slug: string;
+    cover_image: string;
     full_price?: number;
     price: number;
+    sizes: string[];
 };
 
-export type ProductType = BaseProductType & {
-    image_url: string;
-    slug: string;
-};
-
-export type ProductDetailsType = BaseProductType & {
+export type ProductDetailsType = ProductType & {
     short_description: string;
     description: string;
-    sizes: string[];
     images: string[];
-    slug: string;
     related: ProductType[];
 };
 
