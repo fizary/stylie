@@ -81,12 +81,7 @@ export const ProductDetailsPane = ({ product }: ProductDetailsPaneProps) => {
                     <Button
                         onClick={() => {
                             addToCart({
-                                id: product.id,
-                                name: product.name,
-                                slug: product.slug,
-                                image_url: product.images[0],
-                                full_price: product.full_price,
-                                price: product.price,
+                                product,
                                 size: selectedSize,
                                 amount,
                             });
@@ -94,7 +89,7 @@ export const ProductDetailsPane = ({ product }: ProductDetailsPaneProps) => {
                             addToast((props) => (
                                 <AddToCartToast
                                     name={product.name}
-                                    image={product.images[0]}
+                                    image={product.cover_image}
                                     size={selectedSize}
                                     amount={amount}
                                     {...props}

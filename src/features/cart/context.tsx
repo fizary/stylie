@@ -52,7 +52,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
                 document.visibilityState === "hidden"
             ) {
                 const cart = cartItems.map((item) => ({
-                    id: item.id,
+                    id: item.product.id,
                     size: item.size,
                     amount: item.amount,
                 }));
@@ -71,7 +71,9 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     const addToCart = useCallback((newItem: CartItemType) => {
         setCartItems((items) => {
             const index = items.findIndex(
-                (item) => item.id === newItem.id && item.size === newItem.size,
+                (item) =>
+                    item.product.id === newItem.product.id &&
+                    item.size === newItem.size,
             );
 
             if (index !== -1)
@@ -90,7 +92,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
         ({ id, size, amount }: CartPayloadType) => {
             setCartItems((items) => {
                 const index = items.findIndex(
-                    (item) => item.id === id && item.size === size,
+                    (item) => item.product.id === id && item.size === size,
                 );
 
                 if (index === -1) return items;
@@ -107,7 +109,9 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
 
     const removeCartItem = useCallback(({ id, size }: BaseCartPayloadType) => {
         setCartItems((items) =>
-            items.filter((item) => item.id !== id || item.size !== size),
+            items.filter(
+                (item) => item.product.id !== id || item.size !== size,
+            ),
         );
 
         isCartModified.current = true;

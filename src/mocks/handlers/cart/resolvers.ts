@@ -15,7 +15,7 @@ export const cartResolver: HttpResponseResolver<
 
         if (product)
             cart.push({
-                ...product,
+                product,
                 size: item.size,
                 amount: item.amount,
             });
