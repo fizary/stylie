@@ -36,7 +36,7 @@ export const Sidebar = ({ isActive, hideSidebar }: SidebarProps) => {
         <div
             ref={ref}
             className={twMerge(
-                "fixed left-0 top-0 z-50 h-full w-full overflow-x-hidden transition-transform duration-0 lg:hidden",
+                "fixed left-0 top-0 z-[100] h-full w-full overflow-x-hidden transition-transform duration-0 lg:hidden",
                 isActive ? "translate-x-0" : "translate-x-full delay-500",
             )}
         >

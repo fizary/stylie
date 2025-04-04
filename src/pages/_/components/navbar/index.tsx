@@ -20,7 +20,7 @@ export const Navbar = ({ isSticky, showSidebar }: NavbarProps) => {
     return (
         <header
             className={twJoin(
-                "sticky top-0 z-30 bg-white",
+                "sticky top-0 z-[90] bg-white",
                 isSticky && "shadow-md",
             )}
         >
