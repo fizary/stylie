@@ -70,12 +70,7 @@ export const ProductDetailsPane = ({ product }: ProductDetailsPaneProps) => {
                             <div className="mb-2.5 text-sm font-bold">
                                 Amount
                             </div>
-                            <AmountInput
-                                min={1}
-                                max={99}
-                                value={amount}
-                                setValue={setAmount}
-                            />
+                            <AmountInput value={amount} setValue={setAmount} />
                         </div>
                     </div>
                     <Button

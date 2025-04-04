@@ -7,7 +7,7 @@ export const CartItemList = () => {
     return (
         <div className="flex grow flex-col gap-y-2 divide-y divide-gray-3">
             {cart.map((item) => (
-                <CartItem key={`${item.id}-${item.size}`} item={item} />
+                <CartItem key={`${item.product.id}-${item.size}`} item={item} />
             ))}
         </div>
     );
