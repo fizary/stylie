@@ -4,7 +4,7 @@ import { ToastContainer } from "@/components/toast";
 import { Footer } from "./components/footer";
 import { Navbar } from "./components/navbar";
 import { Sidebar } from "./components/sidebar";
-import { useScrollAtTop } from "./hooks/use-scroll-at-top";
+import { useScrollAtTop } from "./use-scroll-at-top";
 import { CartProvider } from "@/features/cart";
 import { lockScroll, unlockScroll } from "@/utils/scroll-lock";
 
