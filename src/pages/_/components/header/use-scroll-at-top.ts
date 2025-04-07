@@ -1,17 +1,13 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState } from "react";
+import { useEventListener } from "@/hooks/use-event-listener";
 
-export function useScrollAtTop() {
+export const useScrollAtTop = () => {
     const [isScrollAtTop, setScrollAtTop] = useState(true);
 
-    const handleScroll = useCallback(() => {
+    useEventListener(window, "scroll", () => {
         if (scrollY !== 0) setScrollAtTop(false);
         else setScrollAtTop(true);
-    }, [setScrollAtTop]);
-
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [handleScroll]);
+    });
 
     return isScrollAtTop;
-}
+};

@@ -6,6 +6,7 @@ import {
     createContext,
     type PropsWithChildren,
 } from "react";
+import { useEventListener } from "@/hooks/use-event-listener";
 import { LocalStorage } from "@/utils/storage";
 import { revalidateCart } from "./services";
 import type {
@@ -45,28 +46,18 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     }, []);
 
     // Save local cart on visibility change
-    useEffect(() => {
-        async function saveLocalCart() {
-            if (
-                isCartModified.current &&
-                document.visibilityState === "hidden"
-            ) {
-                const cart = cartItems.map((item) => ({
-                    id: item.product.id,
-                    size: item.size,
-                    amount: item.amount,
-                }));
+    useEventListener(document, "visibilitychange", () => {
+        if (isCartModified.current && document.visibilityState === "hidden") {
+            const cart = cartItems.map((item) => ({
+                id: item.product.id,
+                size: item.size,
+                amount: item.amount,
+            }));
 
-                storage.set("cart", cart);
-                isCartModified.current = false;
-            }
+            storage.set("cart", cart);
+            isCartModified.current = false;
         }
-
-        // This event behave differently when "emulate a focused page" setting in devtools is checked
-        document.addEventListener("visibilitychange", saveLocalCart);
-        return () =>
-            document.removeEventListener("visibilitychange", saveLocalCart);
-    }, [cartItems]);
+    });
 
     const addToCart = useCallback((newItem: CartItemType) => {
         setCartItems((items) => {

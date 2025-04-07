@@ -1,5 +1,6 @@
 export { CartProvider } from "./context";
-export { useCart, useCartValue } from "./hooks";
+export { useCart } from "./use-cart";
+export { useCartValue } from "./use-cart-value";
 export type {
     CartItemType,
     BaseCartPayloadType,
